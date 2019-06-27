@@ -9,7 +9,4 @@ class AutomataFinito:
     def getNumeroDeEstados(self):
         self.numeroDeEstados = len(self.tablaDeTransiciones) - 1
         return self.numeroDeEstados
-
-    #def obtenerEntradas(self, ):
-
-    
+ 
