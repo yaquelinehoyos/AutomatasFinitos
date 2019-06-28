@@ -8,6 +8,8 @@ Ejemplo de archivo:<br/>
 4,2,3,0<br/>
 
 La primera fila indica los estados.<br/>
-Desde la fila dos hasta la última, se indican las transiciones:
+Desde la fila 2 hasta la última, se indican las transiciones:
   - La primera columna indica los estados. <br/>
-  - la última columna indica las aceptaciones. <br/>
+  - la última columna indica las aceptaciones: <br/>
+    - 0 para indicar un estado de no aceptación. <br/>
+    - 1 para indicar un estado de aceptación.
