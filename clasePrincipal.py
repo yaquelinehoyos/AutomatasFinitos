@@ -1,9 +1,10 @@
-import automataFinito as au
+import automataFinito as af
 import manejoDeArchivo as ma
 
 archivo = ma.ManejoDeArchivo()
-tablaDeTransiciones = archivo.obtenerTablaDeTransiciones("archivo.txt")
-print("Se muestra taba de transiciones: \n",tablaDeTransiciones)
-automataFinito = au.AutomataFinito(tablaDeTransiciones)
-numeroDeEstados = automataFinito.getNumeroDeEstados()
-print("\nNumero de estados: ", numeroDeEstados)
+tablaDeTransiciones = archivo.obtenerTablaDeTransicionesDesdeArchivo( "archivo.txt" )
+automataFinito = af.AutomataFinito( tablaDeTransiciones )
+
+print( "\nTabla de transiciones: \n", automataFinito.obtenerTablaDeTransiciones() )
+print( "\nNumero de estados: ", automataFinito.obtenerNumeroDeEstados() )
+print( "\nEntradas: ", automataFinito.obtenerEntradas() )
