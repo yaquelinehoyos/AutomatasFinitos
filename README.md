@@ -7,7 +7,7 @@ Ejemplo de archivo:<br/>
 3,1,4,0<br/>
 4,2,3,0<br/>
 
-La primera fila indica los estados.<br/>
+La primera fila indica las entradas posibles.<br/>
 Desde la fila 2 hasta la última, se indican las transiciones:
   - La primera columna indica los estados. <br/>
   - la última columna indica las aceptaciones: <br/>
