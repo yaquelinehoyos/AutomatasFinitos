@@ -108,6 +108,6 @@ class ManejoDeArchivo:
         lineasArchivo[-1] = lineasArchivo[-1].strip()       # Borramos el salto de línea
         file1.close()
         file2 = open( self.nombreArchivo, "w" )
-        file2.writelines( lineasArchivo )   # Reescribimos el archivo de nuevo, esta vez sin la línea errónea
+        file2.writelines( lineasArchivo )   # Reescribimos el archivo de nuevo, esta vez sin la línea errónea 
         file2.close()
         
