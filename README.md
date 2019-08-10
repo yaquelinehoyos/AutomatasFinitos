@@ -12,4 +12,8 @@ Desde la fila 2 hasta la última, se indican las transiciones:
   - La primera columna indica los estados. <br/>
   - la última columna indica las aceptaciones: <br/>
     - 0 para indicar un estado de no aceptación. <br/>
-    - 1 para indicar un estado de aceptación.
+    - 1 para indicar un estado de aceptación. <br/> <br/>
+ 
+ VERIFIQUE QUE NO HAYAN SALTOS DE LÍNEA EN LA ÚLTIMA FILA
+ 
+ 
