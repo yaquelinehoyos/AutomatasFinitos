@@ -62,7 +62,7 @@ while choice != 'q':
 
 	elif choice == "3":
 
-		print ("")q
+		print ("")
 		input("Has pulsado la opción 3...\npulsa una tecla para continuar")
 		
 	elif choice == "4":
