@@ -86,13 +86,3 @@ class ArchivoAdaptador:
 
         return cadena.split(",")
 
-    # Metodo que revisa si el AF es AFD
-    def tipo_automata(self, transiciones, estados):
-        _AF = True 
-
-        for _recorrer in range(0,len(estados)):
-            _transiciones = transiciones[estados[_recorrer]]
-            if len(_transiciones) != 2:
-                _AF = False
-                            
-        return _AF

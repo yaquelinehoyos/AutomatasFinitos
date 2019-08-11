@@ -6,6 +6,7 @@ from archivo import Archivo
 from adaptador import ArchivoAdaptador
 from automata_finito import AutomataFinito
 from automata_finito_comprobador import AutomataFinitoComprobador
+from tipo_automata import TipoAutomata
 
 automata_finito = None
 
@@ -59,6 +60,18 @@ while choice != 'q':
 	elif choice == "2":
 
 		print ("")
+
+		if automata_finito is None:			
+			
+			print("Cargue el automata a validar (Opción 1)")
+		
+		else:
+			
+			tipo_automata = TipoAutomata()
+			clase_automata = tipo_automata.automata_ND_D(automata_finito)
+
+			
+
 		input("Has pulsado la opción 2...\npulsa una tecla para continuar")
 
 	elif choice == "3":
