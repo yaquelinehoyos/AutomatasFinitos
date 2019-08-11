@@ -8,6 +8,7 @@ class ArchivoAdaptador:
 
         entradas = self.obtener_entradas_desde_archivo( tabla_transiciones )
         estados = self.obtener_estados_desde_archivo( tabla_transiciones )
+        estado_inicial = self.obtener_estado_inicial_desde_archivo( tabla_transiciones )
         estados_aceptacion = self.obtener_estados_aceptacion_desde_archivo( tabla_transiciones )
         transiciones = self.obtener_transiciones_desde_archivo( tabla_transiciones )
 
@@ -15,6 +16,7 @@ class ArchivoAdaptador:
         
         automata_finito = AutomataFinito()
         automata_finito.asignar_estados( estados )
+        automata_finito.asignar_estado_inicial( estado_inicial )
         automata_finito.asignar_estados_aceptacion( estados_aceptacion )
         automata_finito.asignar_entradas( entradas )
         automata_finito.asignar_transiciones( transiciones )
@@ -49,6 +51,13 @@ class ArchivoAdaptador:
 
         return estados_aceptacion 
         
+    def obtener_estado_inicial_desde_archivo(self, tabla_transiciones):
+
+        segunda_linea = self.__cadena_sep_por_coma_a_lista(tabla_transiciones[1])
+        estado_inicial = segunda_linea[0]
+
+        return estado_inicial
+    
     def obtener_entradas_desde_archivo(self, tabla_transiciones):
         
         entradas = self.__cadena_sep_por_coma_a_lista(tabla_transiciones[0])

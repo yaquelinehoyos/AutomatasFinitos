@@ -1,12 +1,10 @@
 class AutomataFinito:
 
     _estados = []
+    _estado_inicial = ""
     _estados_aceptacion = []
     _entradas = []
     _transiciones = {}
-
-    def __init__(self):
-        pass
     
     def asignar_estados(self, estados):
 
@@ -24,4 +22,27 @@ class AutomataFinito:
 
         self._estados_aceptacion = estados_aceptacion
     
+    def asignar_estado_inicial(self, estado_inicial):
+        
+        self._estado_inicial = estado_inicial
+    
+    def obtener_estados(self):
+
+        return self._estados
+        
+    def obtener_entradas(self):
+    
+        return self._entradas
+        
+    def obtener_transiciones(self):
+    
+        return self._transiciones
+        
+    def obtener_estados_aceptacion(self):
+    
+        return self._estados_aceptacion
+    
+    def obtener_estado_inicial(self):
+
+        return self._estado_inicial
   

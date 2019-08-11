@@ -5,8 +5,9 @@ import sys
 from archivo import Archivo
 from adaptador import ArchivoAdaptador
 from automata_finito import AutomataFinito
+from automata_finito_comprobador import AutomataFinitoComprobador
 
-automata_finito = AutomataFinito()
+automata_finito = None
 
 def get_clear_command_by_os():
 
@@ -73,6 +74,18 @@ while choice != 'q':
 	elif choice == "5":
 
 		print ("")
+
+		if automata_finito is None:			
+			
+			print("Cargue el automata a validar (Opción 1)")
+		
+		else:
+			
+			secuencia = input("Ingrese la secuencia a comprobar\n>>")
+			
+			automata_finito_comprobador = AutomataFinitoComprobador()
+			automata_finito_comprobador.comprobar( automata_finito, secuencia) 
+		
 		input("Has pulsado la opción 5...\npulsa una tecla para continuar")
 
 	elif choice == "q":
@@ -81,7 +94,7 @@ while choice != 'q':
 
 	else:
 
-		print (""
+		print ("")
 		input("No has pulsado ninguna opción correcta...\npulsa una tecla para continuar")
 
 
