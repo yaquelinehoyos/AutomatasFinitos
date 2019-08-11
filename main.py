@@ -68,9 +68,7 @@ while choice != 'q':
 		else:
 			
 			tipo_automata = TipoAutomata()
-			clase_automata = tipo_automata.automata_ND_D(automata_finito)
-
-			
+			tipo_automata.automata_ND_D(automata_finito)			
 
 		input("Has pulsado la opción 2...\npulsa una tecla para continuar")
 
