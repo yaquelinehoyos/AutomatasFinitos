@@ -8,7 +8,8 @@ from automata_finito import AutomataFinito
 from automata_finito_comprobador import AutomataFinitoComprobador
 from tipo_automata import TipoAutomata
 
-automata_finito = None
+archivo = None
+tabla_de_transiciones = []
 
 def get_clear_command_by_os():
 
@@ -28,10 +29,11 @@ def get_user_choice():
 	print ("Selecciona una opción")
 
 	print ("\t1 - Cargar archivo con tabla de transición")
-	print ("\t2 - Determinar tipo autómata finito")
-	print ("\t3 - Convertir a deterministico")
-	print ("\t4 - Simplificar")
-	print ("\t5 - Comprobar")
+	print ("\t2 - Mostrar automata finito")
+	print ("\t3 - Determinar tipo autómata finito")
+	print ("\t4 - Convertir a deterministico")
+	print ("\t5 - Simplificar")
+	print ("\t6 - Comprobar")
 	print ("\tq - Salir")
 	
 	return input("inserta un numero valor >> ")
@@ -52,7 +54,8 @@ while choice != 'q':
 		nombre_archivo = input("Ingres el nombre del archivo\n>>")
 		archivo = Archivo()
 		archivo.cargar_archivo("./tablas_transicion_estados/" + nombre_archivo,"r")
-		
+		tabla_de_transiciones = archivo.obtener_lista_tabla_transicion()
+
 		archivo_adaptador = ArchivoAdaptador()
 		automata_finito = archivo_adaptador.pasar_a_automata_finito(archivo)
 		
@@ -68,22 +71,36 @@ while choice != 'q':
 		
 		else:
 			
-			tipo_automata = TipoAutomata()
-			tipo_automata.automata_ND_D(automata_finito)			
+			print(tabla_de_transiciones)
 
 		input("Has pulsado la opción 2...\npulsa una tecla para continuar")
-
+	
 	elif choice == "3":
 
 		print ("")
-		input("Has pulsado la opción 3...\npulsa una tecla para continuar")
+
+		if automata_finito is None:			
+			
+			print("Cargue el automata a validar (Opción 1)")
 		
+		else:
+			
+			tipo_automata = TipoAutomata()
+			tipo_automata.automata_ND_D(automata_finito)			
+
+		input("Has pulsado la opción 3...\npulsa una tecla para continuar")
+	
 	elif choice == "4":
 
 		print ("")
 		input("Has pulsado la opción 4...\npulsa una tecla para continuar")
-	
+		
 	elif choice == "5":
+
+		print ("")
+		input("Has pulsado la opción 5...\npulsa una tecla para continuar")
+	
+	elif choice == "6":
 
 		print ("")
 
@@ -96,9 +113,13 @@ while choice != 'q':
 			secuencia = input("Ingrese la secuencia a comprobar\n>>")
 			
 			automata_finito_comprobador = AutomataFinitoComprobador()
-			automata_finito_comprobador.comprobar( automata_finito, secuencia) 
+			es_estado_aceptacion = automata_finito_comprobador.comprobar( automata_finito, secuencia)
+			if es_estado_aceptacion == True:
+				print("Secuencia válida")
+			else:
+				print("Secuencia invalida")
 		
-		input("Has pulsado la opción 5...\npulsa una tecla para continuar")
+		input("Has pulsado la opción 6...\npulsa una tecla para continuar")
 
 	elif choice == "q":
 
