@@ -83,6 +83,10 @@ while choice != 'q':
 			
 			print("Cargue el automata a validar (Opción 1)")
 		
+		#else:
+			
+		input("Has pulsado la opción 3...\npulsa una tecla para continuar")
+		
 		else:
 			
 			tipo_automata = TipoAutomata()
@@ -93,6 +97,15 @@ while choice != 'q':
 	elif choice == "4":
 
 		print ("")
+		if automata_finito is None:			
+			
+			print("Cargue el automata a validar (Opción 1)")
+
+		else:
+			
+			tipo_automata = TipoAutomata()
+			_deterministico = tipo_automata.automata_ND_D(automata_finito)
+		
 		input("Has pulsado la opción 4...\npulsa una tecla para continuar")
 		
 	elif choice == "5":
