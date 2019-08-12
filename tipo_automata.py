@@ -14,3 +14,5 @@ class TipoAutomata:
             print ("El automata ingresado es deterministico")
         else: 
             print ("El automata ingresado es no deterministico") 
+        
+        return _AF
