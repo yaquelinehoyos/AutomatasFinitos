@@ -85,7 +85,7 @@ while choice != 'q':
 		
 		#else:
 			
-		input("Has pulsado la opción 3...\npulsa una tecla para continuar")
+			input("Has pulsado la opción 3...\npulsa una tecla para continuar")
 		
 		else:
 			
