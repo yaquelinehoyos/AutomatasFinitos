@@ -48,8 +48,9 @@ while choice != 'q':
 
 		print ("")
 
+		nombre_archivo = input("Ingres el nombre del archivo\n>>")
 		archivo = Archivo()
-		archivo.cargar_archivo("archivo.txt","r")
+		archivo.cargar_archivo("./tablas_transicion_estados/" + nombre_archivo,"r")
 		
 		archivo_adaptador = ArchivoAdaptador()
 		automata_finito = archivo_adaptador.pasar_a_automata_finito(archivo)

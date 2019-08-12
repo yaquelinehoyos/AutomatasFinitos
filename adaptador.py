@@ -1,4 +1,5 @@
 from automata_finito import AutomataFinito
+import re
 
 class ArchivoAdaptador:
 
@@ -68,15 +69,22 @@ class ArchivoAdaptador:
         transiciones = {}
         entradas = self.obtener_entradas_desde_archivo( tabla_transiciones )
 
-        for linea in range(1,len(tabla_transiciones)): 
-            lista = self.__cadena_sep_por_coma_a_lista(tabla_transiciones[linea])
-            estado = lista[0]
+        for fila in range(1,len(tabla_transiciones)): 
+            elementos_fila = self.__obtener_elementos_fila( tabla_transiciones[fila] )
+            estado = elementos_fila[0]
             transiciones_estado = []
 
-            for columna in range(1,len(lista) - 1):
-                estado_destino = lista[columna]
+            for columna in range(1,len(elementos_fila) - 1):
                 entrada = entradas[columna - 1]
-                transiciones_estado.append((entrada,estado_destino))
+                estado_destino = elementos_fila[columna]
+                if re.match('{.+}',estado_destino) is None:
+                    transiciones_estado.append((entrada,estado_destino))
+                else:
+                    estados_destino = elementos_fila[columna][1:len(elementos_fila[columna]) - 1]
+                    estados_destino = self.__cadena_sep_por_coma_a_lista( estados_destino )
+                    for posicion in range(len(estados_destino)):
+                        estado_destino = estados_destino[posicion]
+                        transiciones_estado.append((entrada,estado_destino))
 
             transiciones[estado] = transiciones_estado            
 
@@ -85,3 +93,37 @@ class ArchivoAdaptador:
     def __cadena_sep_por_coma_a_lista(self, cadena):
 
         return cadena.split(",")
+
+    def __obtener_elementos_fila(self, fila_tabla_transiciones):
+
+        elementos_separdos_por_coma = self.__cadena_sep_por_coma_a_lista(fila_tabla_transiciones)
+        elementos_fila = []
+        es_elemento_entre_llaves = False
+        elementos_entre_llaves = ""
+
+        for posicion_fila in range(len(elementos_separdos_por_coma)):
+            elemento = elementos_separdos_por_coma[posicion_fila]
+            if re.match('{.+',elemento) is not None:
+                es_elemento_entre_llaves = True
+                if elementos_entre_llaves == "":
+                    elementos_entre_llaves = elementos_entre_llaves + elemento
+                else:
+                    elementos_entre_llaves = elementos_entre_llaves + "," + elemento
+            elif re.match('.+}',elemento) is not None:
+                es_elemento_entre_llaves = False
+                if elementos_entre_llaves == "":
+                    elementos_entre_llaves = elementos_entre_llaves + elemento
+                else:
+                    elementos_entre_llaves = elementos_entre_llaves + "," + elemento
+                elementos_fila.append(elementos_entre_llaves)
+                elementos_entre_llaves = ""
+            elif re.match(r'\w',elemento) is not None:
+                if es_elemento_entre_llaves == True:
+                    if elementos_entre_llaves == "":
+                        elementos_entre_llaves = elementos_entre_llaves + elemento
+                    else:
+                        elementos_entre_llaves = elementos_entre_llaves + "," + elemento
+                else:
+                    elementos_fila.append(elemento)
+        
+        return elementos_fila
